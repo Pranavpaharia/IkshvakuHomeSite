@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Loader Animation: Orbital Pulse -->
+    <div id="loader">
+      <div class="orbital-pulse-loader">
+        <canvas id="orbital-pulse-canvas" width="400" height="400"></canvas>
+        <div class="orbital-pulse-title">Ikshvaku Labs</div>
+      </div>
+    </div>
     <header>
         <div class="logo">IkshvakuLabs</div>
         <nav>
@@ -60,5 +67,64 @@
             &copy; 2025 IkshvakuLabs
         </div>
     </footer>
+    <script>
+      // Orbital Pulse Loader Animation (canvas)
+      (function() {
+        const canvas = document.getElementById('orbital-pulse-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const w = canvas.width, h = canvas.height;
+        const cx = w/2, cy = h/2;
+        const rings = 5;
+        const dotsPerRing = [8, 12, 16, 20, 24];
+        const maxRadius = 150;
+        const dotBase = 6;
+        const dotPulse = 4;
+        const fps = 60;
+        let t = 0;
+        function draw() {
+          ctx.clearRect(0, 0, w, h);
+          for(let r=0; r<rings; r++) {
+            const dots = dotsPerRing[r];
+            const radius = maxRadius * ((r+1)/(rings+1));
+            for(let i=0; i<dots; i++) {
+              const angle = (2*Math.PI/dots)*i + t*0.015*0.3*(r+1);
+              const x = cx + radius * Math.cos(angle);
+              const y = cy + radius * Math.sin(angle);
+              const pulse = Math.sin(t*0.06*0.3 + r + i/dots*Math.PI*2);
+              const dotSize = dotBase + dotPulse * (0.5 + 0.5*pulse);
+              ctx.beginPath();
+              ctx.arc(x, y, dotSize, 0, Math.PI*2);
+              ctx.fillStyle = '#fff';
+              ctx.globalAlpha = 0.5 + 0.5*pulse;
+              ctx.fill();
+              ctx.globalAlpha = 1;
+            }
+          }
+          t++;
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+    </script>
+    <script>
+      // Show loader for at least 1 second if running locally
+      window.addEventListener('load', function() {
+        const loader = document.getElementById('loader');
+        const isLocal = ["localhost", "127.0.0.1"].includes(window.location.hostname);
+        const minDuration = isLocal ? 2000 : 0;
+        const start = performance.timing.navigationStart || Date.now();
+        const now = Date.now();
+        const elapsed = now - start;
+        const wait = Math.max(minDuration - elapsed, 0);
+        if(loader){
+          setTimeout(() => {
+            loader.style.opacity = '0';
+            loader.style.pointerEvents = 'none';
+            setTimeout(() => loader.style.display = 'none', 600);
+          }, wait);
+        }
+      });
+    </script>
 </body>
 </html>
