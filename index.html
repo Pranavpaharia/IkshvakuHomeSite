@@ -15,25 +15,38 @@
       </div>
     </div>
     <header>
-        <div class="logo">IkshvakuLabs</div>
-        <nav>
-            <ul>
-                <li><a href="#games">Games</a></li>
-                <li><a href="#team">Team</a></li>
-                <li><a href="#blog">Dev Blog</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header-pixel-container"></div>
+    <div class="logo">IkshvakuLabs</div>
+    <nav>
+        <ul>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#blog">Dev Blog</a></li>
+        </ul>
+    </nav>
+</header>
+    <script src="header-pixel-animation.js"></script>
 
     <main>
         <section class="hero" id="games">
-            <div class="hero-content">
-                <h1>GangsOfGaddis</h1>
-                <p>An upcoming action-adventure game set in a dystopian future</p>
-                <button class="cta">Wishlist Now</button>
-            </div>
-            <div class="hero-graphic"></div>
-        </section>
+  <div class="hero-content">
+    <h1>GangsOfGaddis</h1>
+    <p>An upcoming action-adventure game set in a dystopian future</p>
+    <button class="cta">Wishlist Now</button>
+  </div>
+  <div class="hero-graphic"></div>
+</section>
+
+<!-- Horizontal Scroll Section -->
+<section class="horizontal-scroll-section">
+  <div class="horizontal-scroll-container">
+    <div class="horizontal-panel" style="background:#222;color:#FFD166;"><h2>Panel 1</h2><p>Welcome to the horizontal scroll demo!</p></div>
+    <div class="horizontal-panel" style="background:#FFD166;color:#222;"><h2>Panel 2</h2><p>Each panel scrolls horizontally as you scroll down.</p></div>
+    <div class="horizontal-panel" style="background:#073B4C;color:white;"><h2>Panel 3</h2><p>Built with GSAP and ScrollTrigger.</p></div>
+    <div class="horizontal-panel" style="background:#118AB2;color:white;"><h2>Panel 4</h2><p>Easy to customize for your site!</p></div>
+    <div class="horizontal-panel" style="background:#06D6A0;color:#222;"><h2>Panel 5</h2><p>Try scrolling to see the effect.</p></div>
+  </div>
+</section>
 
         <section class="team" id="team">
             <h2>Who's Behind IkshvakuLabs</h2>
@@ -127,5 +140,9 @@
         }
       });
     </script>
+  <!-- GSAP & ScrollTrigger CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="gsap-horizontal-scroll.js"></script>
 </body>
 </html>

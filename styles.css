@@ -433,6 +433,47 @@ h2 {
     color: var(--primary);
 }
 
+/* Horizontal Scroll Section (GSAP) */
+.horizontal-scroll-section {
+  width: 100vw;
+  overflow-x: hidden;
+  background: #111;
+  padding: 0;
+  margin: 0;
+}
+.horizontal-scroll-container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 500vw; /* 5 panels */
+  height: 100vh;
+}
+.horizontal-panel {
+  min-width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-family: inherit;
+  transition: background 0.5s, color 0.5s;
+  box-sizing: border-box;
+  padding: 2rem;
+}
+.horizontal-panel h2 {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+}
+.horizontal-panel p {
+  font-size: 1.2rem;
+}
+
+/* Hide scrollbars for horizontal section */
+.horizontal-scroll-section::-webkit-scrollbar,
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+}
+
 /* Footer */
 footer {
     background: var(--primary);
@@ -456,3 +497,4 @@ footer {
 .legal-links a:hover {
     color: var(--accent);
 }
+
